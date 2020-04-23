@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.redhat</groupId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>Fuse  :: Springboot :: OpenShift :: MFT</name>
+
+    <properties>
+        <!-- configure the versions you want to use here -->
+        <fuse.bom.version>7.5.0.fuse-750029-redhat-00002</fuse.bom.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.redhat-fuse</groupId>
+                <artifactId>fuse-springboot-bom</artifactId>
+                <version>${fuse.bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>fabric8-maven-plugin</artifactId>
+                    <version>${fuse.bom.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <!-- Core plugins -->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${fuse.bom.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>red-hat-ga-repository</id>
+            <url>https://maven.repository.redhat.com/ga</url>
+        </repository>
+        <repository>
+            <id>red-hat-early-access-repository</id>
+            <url>https://maven.repository.redhat.com/earlyaccess/all</url>
+        </repository>
+        <repository>
+            <id>jboss-early-access-repository</id>
+            <url>https://repository.jboss.org/nexus/content/groups/ea</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>red-hat-ga-repository</id>
+            <url>https://maven.repository.redhat.com/ga</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>red-hat-early-access-repository</id>
+            <url>https://maven.repository.redhat.com/earlyaccess/all</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>jboss-early-access-repository</id>
+            <url>https://repository.jboss.org/nexus/content/groups/ea</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <artifactId>fis-mft-with-cache</artifactId>
+    <description>Managed File Transfer with Cache</description>
+    <modules>
+        <module>http-upload-service</module>
+        <module>wmq-upload-service</module>
+    </modules>
+</project>

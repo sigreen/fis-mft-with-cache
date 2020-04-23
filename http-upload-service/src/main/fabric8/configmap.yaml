@@ -1,0 +1,11 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  # Must match the 'spring.application.name' property of the application
+  name: camel-config
+data:
+  application.properties: |
+    # Override the configuration properties here
+    httpUploadService.host=0.0.0.0
+    httpUploadService.port=8123
+    httpUploadService.nfsDir=/mnt/mft

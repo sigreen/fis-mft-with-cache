@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "v1",
+  "properties": {
+      "Blank": {
+          "kind": "property",
+          "displayName": "Blank",
+          "group": "security",
+          "label": "Blank",
+          "required": false,
+          "type": "string",
+          "javaType": "java.lang.String",
+          "defaultValue": "<Leave Blank>",
+          "tags": [],
+          "deprecated": false,
+          "secret": false,
+          "componentProperty": false,
+          "description": "Dummy Field",
+          "order": 1
+      }
+    },
+  "actions": [
+    {
+      "name": "Read File",
+      "description": "Read a file from the local filesystem",
+      "id": "io.syndesis:read-file-from-action",
+      "pattern": "From",
+      "actionType": "connector",
+      "descriptor": {
+        "componentScheme": "file",
+        "inputDataShape": {
+          "kind": "none"
+        },
+        "outputDataShape": {
+          "kind": "none"
+        },
+        "propertyDefinitionSteps": [
+            {
+                "description": "Directory Name",
+                "name": "directoryName",
+                "properties": {
+                    "directoryName": {
+                        "componentProperty": false,
+                        "deprecated": false,
+                        "description": "The file directory name",
+                        "displayName": "Directory Name",
+                        "javaType": "String",
+                        "kind": "parameter",
+                        "required": false,
+                        "secret": false,
+                        "type": "string",
+                        "tags": [],
+                        "enum": []
+                    }
+                }
+            }
+        ]
+      }
+    },
+    {
+      "name": "Write File",
+      "description": "Write a file to the local filesystem",
+      "id": "io.syndesis:write-file-to-action",
+      "pattern": "To",
+      "actionType": "connector",
+      "descriptor": {
+        "componentScheme": "file",
+        "inputDataShape": {
+          "kind": "none"
+        },
+        "outputDataShape": {
+          "kind": "none"
+        },
+        "propertyDefinitionSteps": [
+            {
+                "description": "Directory Name",
+                "name": "directoryName",
+                "properties": {
+                    "directoryName": {
+                        "componentProperty": false,
+                        "deprecated": false,
+                        "description": "The file directory name",
+                        "displayName": "Directory Name",
+                        "javaType": "String",
+                        "kind": "parameter",
+                        "required": false,
+                        "secret": false,
+                        "type": "string",
+                        "tags": [],
+                        "enum": []
+                    }
+                }
+            }
+        ]
+      }
+    }
+  ]
+}
