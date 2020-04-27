@@ -102,5 +102,6 @@
     <modules>
         <module>http-upload-service</module>
         <module>wmq-upload-service</module>
+        <module>api-data-cache</module>
     </modules>
 </project>

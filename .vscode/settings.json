@@ -2,6 +2,6 @@
     "java.configuration.updateBuildConfiguration": "automatic",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "/Users/simon/Library/Application Support/Code/User/globalStorage/redhat.vscode-camelk/java-dependencies-3.0.0/*.jar"
+        "/Users/simon/Library/Application Support/Code/User/globalStorage/redhat.vscode-camelk/java-dependencies-3.0.1/*.jar"
     ]
 }

@@ -2,15 +2,16 @@
 
 This project demonstrates a few simple MFT flows using Fuse on Openshift, including connectivity to a data cache:
 
-![](images/mft-with-box.png "mft-with-box")
+![](images/mft-with-cache.png "mft-with-cache")
 
 This flow includes the following services
 
-1. [Flow One: HTTP Upload Endpoint](./http-upload-service)
+1. [Flow One: Data Cache Service](./api-data-cache)
 2. [Flow Two: SFTP Download Endpoint](./sftp-download)
-3. [Flow Three: File Split AMQ Producer](./wmq-upload-service)
+3. [Flow Three: REST to SOAP transformation](https://github.com/sigreen/rest-soap-transformation#openshift-4x-s2i-build--deploy)
+3. [Flow Three: File Split WNQ Producer](./wmq-upload-service)
 4. [Flow Four: SFTP Push](./sftp-upload)
-
+5. [Flow Five: HTTP Upload Endpoint](./http-upload-service)
 Prerequisites
 ==============================
 
