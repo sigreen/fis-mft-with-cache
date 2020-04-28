@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+
+        <!-- Generation of sample messages -->
+        <route id="test-message-producer-route" trace="false">
+            <description>Route that will generate messages with duplicate IDs</description>
+            <from id="route-timer" uri="timer:messages?period=5000"/>
+            <setHeader headerName="messageId" id="route-header-message-id">
+                <method method="newRandomKey" ref="keyGenerator"/>
+            </setHeader>
+            <setBody id="route-sample-body">
+                <simple>Sample message with ID ${header.messageId}</simple>
+            </setBody>
+            <log id="route-log-generated-message" message="GENERATED message: ${body}"/>
+            <to id="route-to-messages" uri="direct:messages"/>
+        </route>
+
+        <!-- Message consumer with idempotent repository -->
+        <route id="test-message-consumer-route" trace="false">
+            <description>Route that will consume generated messages and process them only once per message ID</description>
+            <from id="route-from-messages" uri="direct:messages"/>
+            <idempotentConsumer id="route-idempotent-repository" messageIdRepositoryRef="infinispanRepository">
+                <header>messageId</header>
+                <!-- The following steps will be done once per messageId -->
+                <log id="route-log-processed-message" message="PROCESSING new message: ${body}"/>
+            </idempotentConsumer>
+        </route>
+
+        <!-- Periodic cache lookup -->
+        <route id="test-using-cache-directly-route" trace="false">
+            <description>Route that will query the infinispan cache periodically</description>
+            <from id="route-lookup-timer" uri="timer:check?period=13000&amp;delay=13000"/>
+            <setHeader headerName="CamelInfinispanKey" id="route-header-infinispan-key">
+                <method method="newRandomKey" ref="keyGenerator"/>
+            </setHeader>
+            <setHeader headerName="CamelInfinispanOperation" id="route-header-infinispan-operation">
+                <constant>CamelInfinispanOperationGet</constant>
+            </setHeader>
+            <setHeader headerName="CamelInfinispanOperationResultHeader">
+                <constant>LookupResult</constant>
+            </setHeader>
+            <to id="route-infinispan-cache-lookup" uri="infinispan:default?cacheContainer=#remoteCacheContainer"/>
+            <choice id="route-cache-choice">
+                <when id="route-cache-hit">
+                    <simple>${header.LookupResult} != null</simple>
+                    <log id="route-log-hit" message="CACHE LOOKUP: entry for key ${header.CamelInfinispanKey} is: ${header.LookupResult}"/>
+                </when>
+                <otherwise id="route-cache-miss">
+                    <log id="route-log-miss" message="CACHE LOOKUP: no entry for key ${header.CamelInfinispanKey}"/>
+                </otherwise>
+            </choice>
+        </route>
+
+    </camelContext>
+</beans>
