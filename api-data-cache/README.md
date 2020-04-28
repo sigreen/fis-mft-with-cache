@@ -13,7 +13,7 @@ Setup
 Build, Deploy and Run on OpenShift
 ==============================
 
-1.Login via the CLI using `oc login -u YOURUSERID`.
+1. Login via the CLI using `oc login -u YOURUSERID`.
 2. Create a new project project by running: `oc new-project api-data-cache`.
 3. Via the Administrator web console, provision a new Data Grid v8.0 operator.
 4. Once the Operator is deployed and running, navigate to Secrets and copy the developer username / password from `example-infinispan-generated-secret`.  Paste the credentials in `/src/main/resources/application.properties`.
