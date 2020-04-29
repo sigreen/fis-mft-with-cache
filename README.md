@@ -9,9 +9,13 @@ This flow includes the following services
 1. [Flow One: Data Cache Service](./api-data-cache)
 2. [Flow Two: SFTP Download Endpoint](./sftp-download)
 3. [Flow Three: REST to SOAP transformation](https://github.com/sigreen/rest-soap-transformation#openshift-4x-s2i-build--deploy)
-3. [Flow Three: File Split WNQ Producer](./wmq-upload-service)
-4. [Flow Four: SFTP Push](./sftp-upload)
-5. [Flow Five: HTTP Upload Endpoint](./http-upload-service)
+4. [Flow Four: API to Kafka transformation](./kafka-api)
+5. [Flow Five: Box Download](./box-download)
+6. [Flow Six: Box Upload](./box-upload)
+7. [Flow Seven: File Split WMQ Producer](./wmq-upload-service)
+8. [Flow Eight: SFDC to EverythingSocial](./sfdc-esocial)
+9. [Flow Nine: SFTP Upload](./sftp-upload)
+10. [Flow Ten: HTTP Upload Endpoint](./http-upload-service)
 
 Prerequisites
 ==============================
