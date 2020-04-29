@@ -12,7 +12,6 @@
     <properties>
         <!-- configure the versions you want to use here -->
         <fuse.bom.version>7.5.0.fuse-750029-redhat-00002</fuse.bom.version>
-        <infinispan-client.version>10.1.5.Final</infinispan-client.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
