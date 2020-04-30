@@ -28,7 +28,7 @@
       "descriptor": {
         "componentScheme": "file",
         "inputDataShape": {
-          "kind": "none"
+          "kind": "any"
         },
         "outputDataShape": {
           "kind": "none"
@@ -68,7 +68,7 @@
           "kind": "none"
         },
         "outputDataShape": {
-          "kind": "none"
+          "kind": "any"
         },
         "propertyDefinitionSteps": [
             {

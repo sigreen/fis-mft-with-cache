@@ -23,6 +23,8 @@ Prerequisites
 - Openshift 4.2+, Integreatly on RHPDS, or RHMI instance
 - Fuse 7.5+ Image Streams (template found [here](https://raw.githubusercontent.com/jboss-fuse/application-templates/master/fis-image-streams.json))
 - Fuse Online 7.5+
+- Download and unzip the following RHMI release found [here](https://github.com/integr8ly/integreatly-operator/releases/tag/v2.1.0)
+- Make sure **go** is installed on your CLI
 
 Installation instructions for Integreatly
 ==============================
@@ -42,6 +44,7 @@ go install github.com/matryer/moq
 make cluster/prepare/project
 make cluster/prepare/crd
 make cluster/prepare/smtp
+make cluster/prepare
 ```
 
 5. Via the web console, navigate to the the `redhat-rhmi-operator` project and open **Operators > OperatorHub**.  Search for RHMI and click *Install*.

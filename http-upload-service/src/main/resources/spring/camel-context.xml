@@ -35,10 +35,20 @@
                 <when id="_when1">
                     <simple>${header.incomingFileType} == 'xml'</simple>
                     <!-- File contains XML records, so send to WMQ -->
-                    <to id="writeToFileS3" uri="file:{{httpUploadService.nfsDir}}/out_wmq"/>
+                    <to id="writeToFileWMQ" uri="file:{{httpUploadService.nfsDir}}/out_wmq"/>
+                </when>rm -
+                <when id="_when2">
+                    <simple>${header.incomingFileType} == 'jso'</simple>
+                    <!-- File contains JSON records, so send to REST -->
+                    <to id="writeToFileREST" uri="file:{{httpUploadService.nfsDir}}/out_rest"/>
+                </when>
+                <when id="_when3">
+                    <simple>${header.incomingFileType} == 'cob'</simple>
+                    <!-- File contains COBOL records, so send to Box -->
+                    <to id="writeToFileREST" uri="file:{{httpUploadService.nfsDir}}/out_box"/>
                 </when>
                 <otherwise id="_otherwise1">
-                    <!-- File is not XML, so send to SFTP -->
+                    <!-- File is not XML, JSON or COBOL, so send to SFTP -->
                     <to id="writeToFileSFTP" uri="file:{{httpUploadService.nfsDir}}/out_sftp"/>
                 </otherwise>
             </choice>

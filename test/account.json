@@ -1,0 +1,11 @@
+"data": {
+    "type" : "B",
+    "id" : "BTMN167384",
+    "version" : 1,
+    "organisation_id" : "SGBLAU2S_20032019",
+    "attributes" : {
+      "country" : "US",
+      "base_currency" : "AUD",
+      "bic" : "NATAAU33"
+    }
+  }  
