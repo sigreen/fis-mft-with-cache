@@ -28,10 +28,10 @@
       "descriptor": {
         "componentScheme": "file",
         "inputDataShape": {
-          "kind": "any"
+          "kind": "none"
         },
         "outputDataShape": {
-          "kind": "none"
+          "kind": "any"
         },
         "propertyDefinitionSteps": [
             {
@@ -65,10 +65,10 @@
       "descriptor": {
         "componentScheme": "file",
         "inputDataShape": {
-          "kind": "none"
+          "kind": "any"
         },
         "outputDataShape": {
-          "kind": "any"
+          "kind": "none"
         },
         "propertyDefinitionSteps": [
             {
