@@ -35,7 +35,7 @@ Build, Deploy and Run on OpenShift
 Now that everything is running perfectly in your local environment, let's try deploying to our SpringBoot container to OpenShift.
 
 1. Login via the CLI using `oc login -u YOURUSERID`.
-2. Go to your Fuse Online project `oc project fuse-XXX`
+2. Create a new project project `oc new-project syndesis`
 3. Via the CLI, cd to your mvn project and execute `oc create -f src/main/fabric8/sa.yml` to create the service account.
 4. Using the same CLI, execute `oc create -f src/main/fabric8/secrets.yml` to create the secret.
 5. Using the same CLI, execute `oc create -f src/main/fabric8/configmap.yaml` to create the configmap.
