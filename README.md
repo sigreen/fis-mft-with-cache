@@ -17,6 +17,15 @@ This flow includes the following services
 9. [Flow Nine: SFTP Upload](./sftp-upload)
 10. [Flow Ten: HTTP Upload Endpoint](./http-upload-service)
 
+Please note that RHMI does not support `RWX` persistent volumes.  Therefore, the workaround is to update the Deployment Config for any integration to include the following (after `dnsPolicy`):
+
+```
+      nodeSelector:
+        kubernetes.io/hostname: ip-10-0-136-141
+```
+
+You should use a single node hostname so that it's possible to fence the workload to a single node, hence allowing RWO to work with the mft PVC.
+
 Prerequisites
 ==============================
 
